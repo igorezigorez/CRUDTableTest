@@ -1,0 +1,11 @@
+﻿<script type="text/html" id="CrudRow">
+    <tr>
+        <td data-bind="text: Name"></td>
+        <td data-bind="text: Description"></td>
+        <td data-bind="text: Weight"></td>
+        <td>
+            <a data-bind="href: '/Crud/Edit/'+Id">Edit</a>
+            <a data-bind="href: '/Crud/Delete/'+Id">Delete</a>
+        </td>
+    </tr>
+</script>
