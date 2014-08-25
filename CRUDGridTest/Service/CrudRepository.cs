@@ -8,7 +8,6 @@ namespace CRUDGridTest
 {
     public class CrudRepository
     {
-        
         public IEnumerable<CrudItem> GetCrudList()
         {
             return items;
@@ -29,6 +28,15 @@ namespace CRUDGridTest
             items.Remove(items.FirstOrDefault(item => item.Id == id));
         }
 
+        public void UpdateCrudItem(CrudItem item)
+        {
+            var old = items.FirstOrDefault(oldItem => oldItem.Id == item.Id);
+
+            old.Description = item.Description;
+            old.Weight = item.Weight;
+            old.Name = item.Name;
+            
+        }
 
         IList<CrudItem> items = new List<CrudItem>()
         {

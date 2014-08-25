@@ -11,8 +11,14 @@ namespace CRUDGridTest.Controllers
 {
     public class CrudController : Controller
     {
-        private CRUDGridTestContext db = new CRUDGridTestContext();
-        private CrudRepository repository = new CrudRepository();
+        private CrudRepository Repository
+        {
+            get
+            {
+                if (Session["CrudRepository"] == null) Session["CrudRepository"] = new CrudRepository();
+                return (CrudRepository)Session["CrudRepository"];
+            }
+        }
 
         public ActionResult Index()
         {
@@ -21,15 +27,12 @@ namespace CRUDGridTest.Controllers
 
         public ActionResult Items()
         {
-            return Json(repository.GetCrudList());
+            return Json(Repository.GetCrudList());
         }
-
-        //
-        // GET: /Crud/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            CrudItem cruditem = repository.GetCrudItem(id);
+            CrudItem cruditem = Repository.GetCrudItem(id);
             if (cruditem == null)
             {
                 return HttpNotFound();
@@ -37,16 +40,10 @@ namespace CRUDGridTest.Controllers
             return View(cruditem);
         }
 
-        //
-        // GET: /Crud/Create
-
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /Crud/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,28 +51,22 @@ namespace CRUDGridTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                repository.AddCrudItem(cruditem);
+                Repository.AddCrudItem(cruditem);
                 return RedirectToAction("Index");
             }
 
             return View(cruditem);
         }
 
-        //
-        // GET: /Crud/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
-            CrudItem cruditem = db.CrudItems.Find(id);
+            CrudItem cruditem = Repository.GetCrudItem(id);
             if (cruditem == null)
             {
                 return HttpNotFound();
             }
             return View(cruditem);
         }
-
-        //
-        // POST: /Crud/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,19 +74,15 @@ namespace CRUDGridTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cruditem).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.UpdateCrudItem(cruditem);
                 return RedirectToAction("Index");
             }
             return View(cruditem);
         }
 
-        //
-        // GET: /Crud/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
-            CrudItem cruditem = db.CrudItems.Find(id);
+            CrudItem cruditem = Repository.GetCrudItem(id);
             if (cruditem == null)
             {
                 return HttpNotFound();
@@ -103,23 +90,12 @@ namespace CRUDGridTest.Controllers
             return View(cruditem);
         }
 
-        //
-        // POST: /Crud/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CrudItem cruditem = db.CrudItems.Find(id);
-            db.CrudItems.Remove(cruditem);
-            db.SaveChanges();
+            Repository.DeleteCrudItem(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

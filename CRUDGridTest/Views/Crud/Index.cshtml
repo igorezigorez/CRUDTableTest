@@ -2,8 +2,7 @@
     ViewBag.Title = "Index";
 }
 
-@section styles
-{
+@section styles{
 	@Styles.Render("~/Content/Crud.css")
 }
 
@@ -11,48 +10,35 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
 </p>
 
 <table id="crudTable" cellspacing="0" cellpadding="0">
     <thead>
-		<tr data-bind="template: {
-			name: 'CrudHeaderCell',
-			foreach: columns
-		}"></tr>
+		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }"></tr>
 	</thead>
-	<tbody data-bind="template: {
-		name: 'CrudRow',
-		foreach: data
-	}"></tbody>
-
+	<tbody data-bind="template: { name: 'CrudRow', foreach: data }"></tbody>
 </table>
+
+
+<div data-bind="template: { name: 'CreateCrud'}"></div>
+
+@*<div id="shade"></div>
+<div id="modal">
+    <textarea rows="5" cols="25"></textarea>
+    <button id="close">Close</button>
+</div>*@
+
+<p>
+    <button id="start">Start</button>
+</p>
 
 @Html.Partial("_CrudRowTemplate")
 @Html.Partial("_CrudHeaderCellTemplate")
+@Html.Partial("_CrudCellTemplate")
+@Html.Partial("_CreateCrud")
 
 @section scripts{
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/crud")
 }
-
-
-
-
-
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>*@

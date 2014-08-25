@@ -4,7 +4,3 @@
 		foreach: $parent.columns
 	}, "></tr>
 </script>
-
-<script type="text/html" id="CrudCell">
-	<td data-bind="html: typeof (renderFunction) === 'function' ? renderFunction($parent[name], $parent) : $parent[name], style: { width: width() + 'px' }"></td>
-</script>
