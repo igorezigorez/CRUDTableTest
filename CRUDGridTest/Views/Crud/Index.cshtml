@@ -2,23 +2,28 @@
     ViewBag.Title = "Index";
 }
 
+@section styles
+{
+	@Styles.Render("~/Content/Crud.css")
+}
+
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table id="crudTable">
+<table id="crudTable" cellspacing="0" cellpadding="0">
     <thead>
-        <tr data-bind="template: {
-		name: 'CrudHeaderCell',
-        foreach: columns
-    }"></tr>
-    </thead>
-    <tbody data-bind="template: {
+		<tr data-bind="template: {
+			name: 'CrudHeaderCell',
+			foreach: columns
+		}"></tr>
+	</thead>
+	<tbody data-bind="template: {
 		name: 'CrudRow',
-        foreach: data
-    }"></tbody>
+		foreach: data
+	}"></tbody>
 
 </table>
 
@@ -29,6 +34,8 @@
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/crud")
 }
+
+
 
 
 

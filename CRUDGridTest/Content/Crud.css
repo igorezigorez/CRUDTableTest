@@ -1,0 +1,41 @@
+﻿table {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+tr {
+	overflow: hidden
+}
+
+table td, th{
+	border: aqua solid thin
+}
+.grip {
+	background-color: #C0C0C0
+}
+
+thead {
+	display: block;
+}
+tbody {
+	display: block;
+	overflow-y:auto;
+	height: 100px;
+}
+
+.header {
+	display: inline-block;
+	width: 100%;
+	margin-left: -3px;
+	margin-right: -3px;
+}
+.grip {
+	display: inline-block;
+	width: 5px;
+	height: 100%;
+	margin-left: -4px;
+	cursor: col-resize
+}

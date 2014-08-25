@@ -1,3 +1,7 @@
 ﻿<script type="text/html" id="CrudHeaderCell">
-    <th data-bind="text: columnName, style: {width: width + 'px'}"></th>
+	<th data-bind="style: { width: width() + 'px' }">
+		<span class="header" data-bind="text: name">
+		</span>
+		<span class="grip" data-bind="attr: {'data-index': $index}"></span>
+	</th>
 </script>

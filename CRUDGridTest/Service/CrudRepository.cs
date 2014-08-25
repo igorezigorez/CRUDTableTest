@@ -16,7 +16,7 @@ namespace CRUDGridTest
 
         public CrudItem GetCrudItem(int id)
         {
-            return items.Where(item => item.Id == id).FirstOrDefault();
+            return items.FirstOrDefault(item => item.Id == id);
         }
 
         public void AddCrudItem(CrudItem item)
@@ -26,10 +26,8 @@ namespace CRUDGridTest
 
         public void DeleteCrudItem(int id)
         {
-            items.Remove(items.Where(item => item.Id == id).FirstOrDefault());
+            items.Remove(items.FirstOrDefault(item => item.Id == id));
         }
-
-
 
 
         IList<CrudItem> items = new List<CrudItem>()
@@ -54,6 +52,27 @@ namespace CRUDGridTest
                 Name = "item3",
                 Description = "item description 3",
                 Weight = 3
+            },
+            new CrudItem()
+            {
+                Id = 4,
+                Name = "item4",
+                Description = "item description 4",
+                Weight = 4
+            },
+            new CrudItem()
+            {
+                Id = 5,
+                Name = "item5",
+                Description = "item description 5",
+                Weight = 5
+            },
+            new CrudItem()
+            {
+                Id = 6,
+                Name = "item6",
+                Description = "item description 6",
+                Weight = 6
             }
         };
     }

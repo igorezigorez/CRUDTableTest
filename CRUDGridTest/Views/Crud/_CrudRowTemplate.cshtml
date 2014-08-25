@@ -1,11 +1,10 @@
 ﻿<script type="text/html" id="CrudRow">
-    <tr>
-        <td data-bind="text: Name"></td>
-        <td data-bind="text: Description"></td>
-        <td data-bind="text: Weight"></td>
-        <td>
-            <a data-bind="href: '/Crud/Edit/'+Id">Edit</a>
-            <a data-bind="href: '/Crud/Delete/'+Id">Delete</a>
-        </td>
-    </tr>
+	<tr data-bind="template: {
+		name: 'CrudCell',
+		foreach: $parent.columns
+	}, "></tr>
+</script>
+
+<script type="text/html" id="CrudCell">
+	<td data-bind="html: typeof (renderFunction) === 'function' ? renderFunction($parent[name], $parent) : $parent[name], style: { width: width() + 'px' }"></td>
 </script>
