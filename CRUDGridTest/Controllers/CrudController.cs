@@ -40,11 +40,6 @@ namespace CRUDGridTest.Controllers
             return View(cruditem);
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CrudItem cruditem)
@@ -52,10 +47,8 @@ namespace CRUDGridTest.Controllers
             if (ModelState.IsValid)
             {
                 Repository.AddCrudItem(cruditem);
-                return RedirectToAction("Index");
             }
-
-            return View(cruditem);
+            return new EmptyResult();
         }
 
         public ActionResult Edit(int id = 0)

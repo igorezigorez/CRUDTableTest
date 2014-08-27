@@ -1,4 +1,6 @@
-﻿table {
+﻿
+
+table {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -10,9 +12,9 @@
     white-space: nowrap;
 }
 
-tr {
+select{
+    width: 100%;
 }
-
 table td, th {
     border: aqua solid thin;
 }
@@ -82,4 +84,8 @@ body {
     background: silver;
     opacity: 0.5;
     filter: alpha(opacity=50);
+}
+
+#close{
+    float:right;
 }

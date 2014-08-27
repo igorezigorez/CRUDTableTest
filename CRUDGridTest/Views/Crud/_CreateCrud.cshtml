@@ -3,12 +3,11 @@
 <script type="text/html" id="CreateCrud">
     <div id="shade"></div>
     <div id="modal">
-        @using (Html.BeginForm())
+        
+        @using (Ajax.BeginForm("Create", new AjaxOptions() { OnComplete = "onComplete" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-
-
 
             <fieldset>
                 <legend>CrudItem</legend>
@@ -27,6 +26,7 @@
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Description)
                     @Html.ValidationMessageFor(model => model.Description)
+                    
                 </div>
 
                 <div class="editor-label">
@@ -36,19 +36,31 @@
                     @Html.EditorFor(model => model.Weight)
                     @Html.ValidationMessageFor(model => model.Weight)
                 </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Checked)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Checked)
+                    @Html.ValidationMessageFor(model => model.Checked)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Options)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Options)
+                    @Html.ValidationMessageFor(model => model.Options)
+                </div>
 
                 <p>
                     <input class="submitCrud" type="submit" value="Create" />
+                    <input class="cancel" type="button" value="Cancel" />
+                    <button id="close">Close</button>
                 </p>
             </fieldset>
-
-
         }
-
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
 
     </div>
 
 </script>
+
+

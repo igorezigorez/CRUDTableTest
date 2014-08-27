@@ -24,12 +24,6 @@ namespace CRUDGridTest
             bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
                 "~/Scripts/app/ajaxlogin.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/todo").Include(
-                "~/Scripts/app/todo.bindings.js",
-                "~/Scripts/app/todo.datacontext.js",
-                "~/Scripts/app/todo.model.js",
-                "~/Scripts/app/todo.viewmodel.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/crud").Include(
                 "~/Scripts/app/headerDrag.js",
                 "~/Scripts/app/crud.viewmodel.js",
@@ -43,8 +37,7 @@ namespace CRUDGridTest
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/Site.css",
-                "~/Content/TodoList.css"));
+                "~/Content/Site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

@@ -8,11 +8,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-
-</p>
-
 <table id="crudTable" cellspacing="0" cellpadding="0">
     <thead>
 		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }"></tr>
@@ -23,14 +18,8 @@
 
 <div data-bind="template: { name: 'CreateCrud'}"></div>
 
-@*<div id="shade"></div>
-<div id="modal">
-    <textarea rows="5" cols="25"></textarea>
-    <button id="close">Close</button>
-</div>*@
-
 <p>
-    <button id="start">Start</button>
+    <button id="start">Create New</button>
 </p>
 
 @Html.Partial("_CrudRowTemplate")
@@ -41,4 +30,5 @@
 @section scripts{
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/crud")
+    @Scripts.Render("~/bundles/jqueryval")
 }

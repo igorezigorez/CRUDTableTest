@@ -45,42 +45,54 @@ namespace CRUDGridTest
                 Id = 1,
                 Name = "item1",
                 Description = "item description 1",
-                Weight = 1
+                Weight = 1,
+                Checked = true,
+                Options = new List<string>(){"1","2","3"}
             },
             new CrudItem()
             {
                 Id = 2,
                 Name = "item2",
                 Description = "item description 2",
-                Weight = 2
+                Weight = 2,
+                Checked = false,
+                Options = new List<string>(){"first","second"}
             },
             new CrudItem()
             {
                 Id = 3,
                 Name = "item3",
                 Description = "item description 3",
-                Weight = 3
+                Weight = 3,
+                Checked = false,
+                Options = new List<string>(){"first","second"}
             },
             new CrudItem()
             {
                 Id = 4,
                 Name = "item4",
                 Description = "item description 4",
-                Weight = 4
+                Weight = 4,
+                Checked = true,
+                Options = new List<string>(){"a","b"}
             },
             new CrudItem()
             {
                 Id = 5,
                 Name = "item5",
                 Description = "item description 5",
-                Weight = 5
+                Weight = 5,
+                Checked = true,
+                Options = new List<string>(){"a"}
             },
             new CrudItem()
             {
                 Id = 6,
                 Name = "item6",
                 Description = "item description 6",
-                Weight = 6
+                Weight = 6,
+                Checked = true,
+                Options = new List<string>(){"a","b","c","d"}
             }
         };
     }
