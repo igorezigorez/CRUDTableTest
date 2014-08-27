@@ -12,7 +12,7 @@
     <thead>
 		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }"></tr>
 	</thead>
-	<tbody data-bind="template: { name: 'CrudRow', foreach: data }"></tbody>
+	<tbody data-bind="template: { name: 'CrudRow', foreach: data, as: 'row' }"></tbody>
 </table>
 
 

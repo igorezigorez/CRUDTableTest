@@ -1,3 +1,18 @@
 ﻿<script type="text/html" id="CrudCell">
-    <td data-bind="html: typeof (renderFunction) === 'function' ? renderFunction($parent[name], $parent) : $parent[name], style: { width: width() + 'px' }"></td>
+    <td data-bind="html: typeof (renderFunction) === 'function' ? renderFunction(row[name], row) : row[name], style: { width: width() + 'px' }"></td>
+</script>
+
+<script type="text/html" id="CrudActions">
+    <td data-bind="style: { width: width() + 'px' }">
+        <a data-bind="attr: { href: '/Crud/Edit/' + row['Id']}">Edit</a>
+        <a class="deleteButton" data-bind="click: function(){ $root.deleteitem(row['Id']) }">x</a>
+    </td>
+</script>
+
+<script type="text/html" id="CrudSelect">
+    <td data-bind="style: { width: width() + 'px' }">
+        <select data-bind="foreach: row['Options']">
+            <option data-bind="text: $data"></option>
+        </select>
+    </td>
 </script>

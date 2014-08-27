@@ -8,6 +8,7 @@ namespace CRUDGridTest
 {
     public class CrudRepository
     {
+        private int nextId = 30;
         public IEnumerable<CrudItem> GetCrudList()
         {
             return items;
@@ -20,6 +21,7 @@ namespace CRUDGridTest
 
         public void AddCrudItem(CrudItem item)
         {
+            item.Id = nextId++;
             items.Add(item);
         }
 
@@ -27,7 +29,7 @@ namespace CRUDGridTest
         {
             items.Remove(items.FirstOrDefault(item => item.Id == id));
         }
-
+            
         public void UpdateCrudItem(CrudItem item)
         {
             var old = items.FirstOrDefault(oldItem => oldItem.Id == item.Id);

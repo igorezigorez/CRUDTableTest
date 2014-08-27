@@ -1,6 +1,8 @@
 ﻿<script type="text/html" id="CrudRow">
-	<tr data-bind="template: {
-		name: 'CrudCell',
-		foreach: $parent.columns
-	}, "></tr>
+    <tr data-bind="template: {
+		name: $parent.getColumnTemplateName,
+		foreach: $parent.columns,
+        as: 'column'
+	}">
+    </tr>
 </script>

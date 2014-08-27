@@ -73,22 +73,11 @@ namespace CRUDGridTest.Controllers
             return View(cruditem);
         }
 
-        public ActionResult Delete(int id = 0)
-        {
-            CrudItem cruditem = Repository.GetCrudItem(id);
-            if (cruditem == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cruditem);
-        }
-
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             Repository.DeleteCrudItem(id);
-            return RedirectToAction("Index");
+            return new EmptyResult();
         }
     }
 }

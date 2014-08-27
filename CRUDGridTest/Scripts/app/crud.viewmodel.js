@@ -1,6 +1,7 @@
-﻿(function() {
+﻿function init() {
 
     var crudViewModel = {
+
         data: ko.observableArray([]),
         columns: ko.observableArray(
         [
@@ -8,11 +9,22 @@
             { name: 'Description', width: ko.observable(250) },
             { name: 'Weight', width: ko.observable(60)},
             { name: 'Checked', width: ko.observable(100), renderFunction: function (data) { return data ? '+' : '-' } },
-            { name: 'Options', width: ko.observable(130), renderFunction: createSelectElement},
-            { name: 'Actions', width: ko.observable(130), renderFunction: function(data, item) {
-                return "<a href='/Crud/Edit/" + item.Id + "'>Edit</a>&nbsp;<a href='/Crud/Delete/" + item.Id + "'>Delete</a>";
-            } }
+            { name: 'Options', width: ko.observable(130), templateName: "CrudSelect", renderFunction: createSelectElement},
+            { name: 'Actions', width: ko.observable(130), templateName: "CrudActions" }
         ]),
+        getColumnTemplateName: function(column){
+            return column.templateName ? column.templateName : 'CrudCell';
+        },
+        deleteitem: function (id) {
+            $.ajax({
+                url: '/Crud/Delete',
+                type: 'POST',
+                data: 'id='+id,
+                success: function () {
+                    crudViewModel.refresh();
+                }
+            });
+        },
         refresh: function () {
             $.ajax({
                 url: '/Crud/Items',
@@ -53,7 +65,10 @@
         $modal.css('display', 'none');
         $shade.css('display', 'none');
     });
-
+    $('.close').click(function () {
+        $modal.css('display', 'none');
+        $shade.css('display', 'none');
+    });
 
 
     function headerDrag(table, model) {
@@ -110,4 +125,6 @@
 
 
 
-}());
+};
+
+var viewModel = init();

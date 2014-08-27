@@ -1,6 +1,4 @@
-﻿
-
-table {
+﻿table {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -15,12 +13,17 @@ table {
 select{
     width: 100%;
 }
-table td, th {
-    border: aqua solid thin;
-}
 
-.grip {
-    background-color: #C0C0C0;
+td, th {
+    border-bottom: #BBBBBB solid 2px;
+    border-left: #BBBBBB solid 1px;
+    border-right: #BBBBBB solid 1px;
+    display: inline-block;
+    overflow: hidden;
+    padding-left: 3px;
+}
+th {
+    border-top: #BBBBBB solid 2px;
 }
 
 thead {
@@ -51,18 +54,13 @@ tbody {
     position: absolute;
 }
 
-
-body {
-    margin: 0;
-}
-
 #shade, #modal {
     display: none;
 }
 
 #shade {
     position: fixed;
-    z-index: 100;
+    z-index: 50;
     top: 0;
     left: 0;
     width: 100%;
@@ -71,21 +69,25 @@ body {
 
 #modal {
     position: fixed;
-    z-index: 101;
+    z-index: 51;
     top: 20%;
     left: 25%;
     width: 50%;
     background-color: #BBBBBB;
     text-align: center;
-    padding: 5% 1%;
 }
 
 #shade {
     background: silver;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
+    opacity: 0.6;
+    filter: alpha(opacity=60);
 }
 
-#close{
+.close, .deleteButton{
     float:right;
+}
+
+.deleteButton{
+    color: #FF0000;
+    cursor: pointer;
 }

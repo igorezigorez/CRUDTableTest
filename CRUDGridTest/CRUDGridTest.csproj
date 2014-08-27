@@ -312,6 +312,7 @@
     <Content Include="Views\Shared\_UserSettings.cshtml" />
     <Content Include="Views\Crud\_CreateCrud.cshtml" />
     <Content Include="Views\CrudTable\_EditTest1.cshtml" />
+    <Content Include="Views\Crud\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
