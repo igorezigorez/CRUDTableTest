@@ -24,20 +24,14 @@ namespace CRUDGridTest
             bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
                 "~/Scripts/app/ajaxlogin.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/crud").Include(
-                "~/Scripts/app/headerDrag.js",
-                "~/Scripts/app/crud.viewmodel.js",
-                "~/Scripts/app/crud.bindings.js"
-                ));
-
-
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/Site.css"));
+                "~/Content/Site.css",
+                "~/Content/Crud.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

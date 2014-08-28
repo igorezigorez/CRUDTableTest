@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using CRUDGridTest.Models;
 
 namespace CRUDGridTest
@@ -37,6 +35,7 @@ namespace CRUDGridTest
             old.Description = item.Description;
             old.Weight = item.Weight;
             old.Name = item.Name;
+            old.Checked = item.Checked;
             
         }
 

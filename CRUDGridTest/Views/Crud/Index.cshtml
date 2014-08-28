@@ -2,15 +2,11 @@
     ViewBag.Title = "Index";
 }
 
-@section styles{
-	@Styles.Render("~/Content/Crud.css")
-}
-
 <h2>Index</h2>
 
 <table id="crudTable" cellspacing="0" cellpadding="0">
     <thead>
-		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }"></tr>
+		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }, event: { mousedown: startResize }"></tr>
 	</thead>
 	<tbody data-bind="template: { name: 'CrudRow', foreach: data, as: 'row' }"></tbody>
 </table>
@@ -19,16 +15,16 @@
 <div data-bind="template: { name: 'CreateCrud'}"></div>
 
 <p>
-    <button id="start">Create New</button>
+    <button id="start" data-bind="click: function () { modalDisplay('block') }">Create New</button>
 </p>
 
-@Html.Partial("_CrudRowTemplate")
-@Html.Partial("_CrudHeaderCellTemplate")
-@Html.Partial("_CrudCellTemplate")
-@Html.Partial("_CreateCrud")
+@Html.Partial("_HeaderCellTemplate")
+@Html.Partial("_RowTemplate")
+@Html.Partial("_CellTemplate")
+@Html.Partial("_Create")
 
 @section scripts{
     @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/crud")
+    @Scripts.Render("~/Scripts/crud.viewmodel.js")
     @Scripts.Render("~/bundles/jqueryval")
 }
