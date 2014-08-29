@@ -1,4 +1,5 @@
 ﻿function CreateViewModel() {
+
     var crudViewModel = {
         data: ko.observableArray([]),
         columns: ko.observableArray(
@@ -34,34 +35,38 @@
             });
         },
 
-        currentColumnIndex: 0,
-        pressed: 0,
-        startX: 0,
-        startWidth1: 0,
-        startWidth2: 0,
+        resizeState: {
+            currentColumnIndex: 0,
+            pressed: 0,
+            startX: 0,
+            startWidth1: 0,
+            startWidth2: 0
+        },
 
-        startResize: function(data, e) {
+        startResize: function (data, e) {
             if (e.target.className == "grip") {
-                this.currentColumnIndex = $(e.target).data("index");
-                this.pressed = true;
-                this.startX = e.pageX;
-                this.startWidth1 = this.columns()[this.currentColumnIndex].width();
-                if (this.columns().length > [this.currentColumnIndex + 1]) {
-                    this.startWidth2 = this.columns()[this.currentColumnIndex + 1].width();
+                var state = this.resizeState;
+                state.currentColumnIndex = $(e.target).data("index");
+                state.pressed = true;
+                state.startX = e.pageX;
+                state.startWidth1 = this.columns()[state.currentColumnIndex].width();
+                if (this.columns().length > [state.currentColumnIndex + 1]) {
+                    state.startWidth2 = this.columns()[state.currentColumnIndex + 1].width();
                 }
             }
         },
         resize: function (pageX) {
-            if (this.pressed) {
-                this.columns()[this.currentColumnIndex].width(this.startWidth1 + (pageX - this.startX));
-                if (this.columns().length > [this.currentColumnIndex + 1]) {
-                    this.columns()[this.currentColumnIndex + 1].width(this.startWidth2 - (pageX - this.startX));
+            var state = this.resizeState;
+            if (state.pressed) {
+                this.columns()[state.currentColumnIndex].width(state.startWidth1 + (pageX - state.startX));
+                if (this.columns().length > [state.currentColumnIndex + 1]) {
+                    this.columns()[state.currentColumnIndex + 1].width(state.startWidth2 - (pageX - state.startX));
                 }
             }
         },
         stopResize: function() {
-            if (this.pressed) {
-                this.pressed = false;
+            if (this.resizeState.pressed) {
+                this.resizeState.pressed = false;
             }
         },
     };
@@ -72,7 +77,7 @@
     ko.applyBindings(crudViewModel);
     crudViewModel.refresh();
 
-    return crudViewModel;
+    return crudViewModel.refresh;
 };
 
-var viewModel = CreateViewModel();
+var refreshCrudFunc = CreateViewModel();
