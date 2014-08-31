@@ -1,7 +1,15 @@
 ﻿<script type="text/html" id="CrudHeaderCell">
 	<th data-bind="style: { width: width() + 'px' }">
-		<span class="header" data-bind="text: name">
-		</span>
-		<span class="grip" data-bind="attr: {'data-index': $index}"></span>
+        <span class="header" data-bind="style: { width: (width() - 6) + 'px' }">
+            <a class=" moveleft"
+              data-bind="click: function() { $root.moveColumn($index()) }">
+            &lt;</a>
+            <span data-bind="text: name"></span>
+            <a class="moveRight"
+               data-bind="click: function() { $root.moveColumn($index()+1) }">&gt;</a>
+
+        </span>
+        <span class="grip"
+              data-bind="attr: {'data-index': $index}"></span>
 	</th>
 </script>

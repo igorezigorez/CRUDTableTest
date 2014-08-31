@@ -26,35 +26,20 @@ namespace CRUDGridTest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CrudItem cruditem)
+        public ActionResult Change(CrudItem cruditem)
         {
             if (ModelState.IsValid)
             {
-                Repository.AddCrudItem(cruditem);
+                if (cruditem.Id == 0)
+                {
+                    Repository.AddCrudItem(cruditem);
+                }
+                else
+                {
+                    Repository.UpdateCrudItem(cruditem);
+                }
             }
             return new EmptyResult();
-        }
-
-        public ActionResult Edit(int id = 0)
-        {
-            CrudItem cruditem = Repository.GetCrudItem(id);
-            if (cruditem == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cruditem);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(CrudItem cruditem)
-        {
-            if (ModelState.IsValid)
-            {
-                Repository.UpdateCrudItem(cruditem);
-                return RedirectToAction("Index");
-            }
-            return View(cruditem);
         }
 
         [HttpPost, ActionName("Delete")]

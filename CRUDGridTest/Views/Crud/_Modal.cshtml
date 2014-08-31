@@ -1,18 +1,20 @@
 ﻿@model CRUDGridTest.Models.CrudItem
 
-<script type="text/html" id="CreateCrud">
+<script type="text/html" id="ChangeCrud">
     <div class="shadow" data-bind="style: { display: modalDisplay }"></div>
     <div class="modal" data-bind="style: { display: modalDisplay }">
             <span><input class="close" type="button" value="X" data-bind="click: function () { modalDisplay('none') }"></span>
             <h2 data-bind="text: modalActionName"></h2>
         
-        @using (Ajax.BeginForm("Create", new AjaxOptions() { OnComplete = "refreshCrudFunc" }))
+        @using (Ajax.BeginForm("Change", new AjaxOptions() { OnComplete = "refreshCrudFunc" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
             <fieldset>
                 <legend>CrudItem</legend>
+
+                @Html.HiddenFor(model=> model.Id, new { data_bind = "value: current().Id" })
 
                 <div class="editor-label">
                     @Html.LabelFor(model => model.Name)
@@ -39,11 +41,12 @@
                     @Html.ValidationMessageFor(model => model.Weight)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Checked)
+                    @Html.LabelFor(model => model.Active)
                 </div>
                 <div class="editor-field">
-                    @Html.CheckBoxFor(model => model.Checked, new { data_bind = "value: current().Checked" })
-                    @Html.ValidationMessageFor(model => model.Checked)
+                    @Html.CheckBoxFor(model => model.Active, new { data_bind = "checked: current().Active" })
+                    @Html.ValidationMessageFor(model => model.Active)
+
                 </div>
                 <div class="editor-label">
                     @Html.LabelFor(model => model.Options)

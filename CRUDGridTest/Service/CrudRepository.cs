@@ -35,7 +35,7 @@ namespace CRUDGridTest
             old.Description = item.Description;
             old.Weight = item.Weight;
             old.Name = item.Name;
-            old.Checked = item.Checked;
+            old.Active = item.Active;
             
         }
 
@@ -47,7 +47,7 @@ namespace CRUDGridTest
                 Name = "item1",
                 Description = "item description 1",
                 Weight = 1,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"1","2","3"}
             },
             new CrudItem()
@@ -56,7 +56,7 @@ namespace CRUDGridTest
                 Name = "item2",
                 Description = "item description 2",
                 Weight = 2,
-                Checked = false,
+                Active = false,
                 Options = new List<string>(){"first","second"}
             },
             new CrudItem()
@@ -65,7 +65,7 @@ namespace CRUDGridTest
                 Name = "item3",
                 Description = "item description 3",
                 Weight = 3,
-                Checked = false,
+                Active = false,
                 Options = new List<string>(){"first","second"}
             },
             new CrudItem()
@@ -74,7 +74,7 @@ namespace CRUDGridTest
                 Name = "item4",
                 Description = "item description 4",
                 Weight = 4,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a","b"}
             },
             new CrudItem()
@@ -83,7 +83,7 @@ namespace CRUDGridTest
                 Name = "item5",
                 Description = "item description 5",
                 Weight = 5,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a"}
             },
             new CrudItem()
@@ -92,7 +92,7 @@ namespace CRUDGridTest
                 Name = "item6",
                 Description = "item description 6",
                 Weight = 6,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a","b","c","d"}
             },
             new CrudItem()
@@ -101,7 +101,7 @@ namespace CRUDGridTest
                 Name = "new item 7",
                 Description = "some item description",
                 Weight = 55,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a","b","c","d"}
             },
             new CrudItem()
@@ -110,7 +110,7 @@ namespace CRUDGridTest
                 Name = "new item 8",
                 Description = "some item description",
                 Weight = 55,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a","b","c","d"}
             },
             new CrudItem()
@@ -119,7 +119,7 @@ namespace CRUDGridTest
                 Name = "new item 9",
                 Description = "text",
                 Weight = 5,
-                Checked = true,
+                Active = true,
                 Options = new List<string>(){"a","b","c","d"}
             }
         };

@@ -4,9 +4,8 @@
 
 <script type="text/html" id="CrudActions">
     <td data-bind="style: { width: width() + 'px' }">
-        @*<a data-bind="attr: { href: '/Crud/Edit/' + row['Id']}">Edit</a>*@
-        <a data-bind="click: function(){ $root.editItem(row); }">Edit</a>
-        <a class="deleteButton" data-bind="click: function(){ $root.deleteItem(row['Id']) }">x</a>
+        <a class="editLink" data-bind="click: function(){ $root.editItemClick(row); }">Edit</a>
+        <a class="deleteLink" data-bind="click: function(){ $root.deleteItemClick(row['Id']) }">x</a>
     </td>
 </script>
 

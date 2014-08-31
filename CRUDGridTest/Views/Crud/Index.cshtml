@@ -4,7 +4,7 @@
 
 <h2>Index</h2>
 
-<table id="crudTable" cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0">
     <thead>
 		<tr data-bind="template: { name: 'CrudHeaderCell', foreach: columns }, event: { mousedown: startResize }"></tr>
 	</thead>
@@ -12,16 +12,16 @@
 </table>
 
 
-<div data-bind="template: { name: 'CreateCrud'}"></div>
+<div data-bind="template: { name: 'ChangeCrud'}"></div>
 
 <p>
-    <button id="start" data-bind="click: function () { modalDisplay('block') }">Create New</button>
+    <button data-bind="click: createItemClick">Create New</button>
 </p>
 
 @Html.Partial("_HeaderCellTemplate")
 @Html.Partial("_RowTemplate")
 @Html.Partial("_CellTemplate")
-@Html.Partial("_Create")
+@Html.Partial("_Modal")
 
 @section scripts{
     @Scripts.Render("~/bundles/knockout")

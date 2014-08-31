@@ -8,7 +8,7 @@ namespace CRUDGridTest.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int Weight { get; set; }
-        public bool Checked { get; set; }
+        public bool Active { get; set; }
         public IEnumerable<string> Options { get; set; }
     }
 }
