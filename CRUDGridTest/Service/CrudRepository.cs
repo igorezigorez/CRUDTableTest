@@ -94,6 +94,33 @@ namespace CRUDGridTest
                 Weight = 6,
                 Checked = true,
                 Options = new List<string>(){"a","b","c","d"}
+            },
+            new CrudItem()
+            {
+                Id = 7,
+                Name = "new item 7",
+                Description = "some item description",
+                Weight = 55,
+                Checked = true,
+                Options = new List<string>(){"a","b","c","d"}
+            },
+            new CrudItem()
+            {
+                Id = 8,
+                Name = "new item 8",
+                Description = "some item description",
+                Weight = 55,
+                Checked = true,
+                Options = new List<string>(){"a","b","c","d"}
+            },
+            new CrudItem()
+            {
+                Id = 9,
+                Name = "new item 9",
+                Description = "text",
+                Weight = 5,
+                Checked = true,
+                Options = new List<string>(){"a","b","c","d"}
             }
         };
     }

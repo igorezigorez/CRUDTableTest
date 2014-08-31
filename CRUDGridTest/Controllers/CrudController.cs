@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using CRUDGridTest.Models;
 
 namespace CRUDGridTest.Controllers
@@ -25,16 +22,6 @@ namespace CRUDGridTest.Controllers
         public ActionResult Items()
         {
             return Json(Repository.GetCrudList());
-        }
-
-        public ActionResult Details(int id = 0)
-        {
-            CrudItem cruditem = Repository.GetCrudItem(id);
-            if (cruditem == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cruditem);
         }
 
         [HttpPost]

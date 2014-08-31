@@ -1,12 +1,12 @@
 ﻿@model CRUDGridTest.Models.CrudItem
 
 <script type="text/html" id="CreateCrud">
-    <div id="shade" data-bind="style: { display: modalDisplay }"></div>
-    <div id="modal" data-bind="style: { display: modalDisplay }">
+    <div class="shadow" data-bind="style: { display: modalDisplay }"></div>
+    <div class="modal" data-bind="style: { display: modalDisplay }">
             <span><input class="close" type="button" value="X" data-bind="click: function () { modalDisplay('none') }"></span>
-            <h2>Create</h2>
+            <h2 data-bind="text: modalActionName"></h2>
         
-        @using (Ajax.BeginForm("Create", new AjaxOptions() { OnComplete = "viewModel.refresh" }))
+        @using (Ajax.BeginForm("Create", new AjaxOptions() { OnComplete = "refreshCrudFunc" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -18,7 +18,7 @@
                     @Html.LabelFor(model => model.Name)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { data_bind = "value: current().Name" })
                     @Html.ValidationMessageFor(model => model.Name)
                 </div>
 
@@ -26,7 +26,7 @@
                     @Html.LabelFor(model => model.Description)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.Description)
+                    @Html.TextBoxFor(model => model.Description, new { data_bind = "value: current().Description" })
                     @Html.ValidationMessageFor(model => model.Description)
                     
                 </div>
@@ -35,14 +35,14 @@
                     @Html.LabelFor(model => model.Weight)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.Weight)
+                    @Html.TextBoxFor(model => model.Weight, new { data_bind = "value: current().Weight", type = "number" })
                     @Html.ValidationMessageFor(model => model.Weight)
                 </div>
                 <div class="editor-label">
                     @Html.LabelFor(model => model.Checked)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.Checked)
+                    @Html.CheckBoxFor(model => model.Checked, new { data_bind = "value: current().Checked" })
                     @Html.ValidationMessageFor(model => model.Checked)
                 </div>
                 <div class="editor-label">
@@ -54,7 +54,7 @@
                 </div>
 
                 <p>
-                    <input class="submitCrud" type="submit" value="Create" data-bind="click: function () { modalDisplay('none'); return true; }"/>
+                    <input class="submitCrud" type="submit" value="Create" data-bind="click: function () { modalDisplay('none'); return true; }, value: modalActionName" />
                 </p>
             </fieldset>
         }
